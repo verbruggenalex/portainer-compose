@@ -3,9 +3,6 @@ version: '3'
 services:
   web:
     image: fpfis/php71-dev
-    working_dir: /var/www/html
-    depends_on:
-      - mysql
     deploy:
       replicas: 1
     ports:
