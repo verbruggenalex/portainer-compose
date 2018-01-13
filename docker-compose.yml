@@ -20,7 +20,7 @@ services:
   portainer:
     image: portainer/portainer
     container_name: "portainer-app"
-    command: --templates http://templates/templates.json
+    command: --templates https://raw.githubusercontent.com/verbruggenalex/templates/master/templates.json
     networks:
       - local
     volumes:

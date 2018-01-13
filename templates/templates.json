@@ -13,7 +13,7 @@
     "volumes": ["/var/www/html"]
   },
   {
-    "type": "container",
+    "type": "stack",
     "title": "Horizon2020",
     "description": "Platform site of Horizon2020",
     "note": "Deploys a Wordpress instance connected to a MySQL database.",
