@@ -1,0 +1,14 @@
+[
+  {
+    "type": "stack",
+    "title": "Horizon2020",
+    "description": "FPFIS Subsite for horizon2020",
+    "note": "Deploys the API gateway and sample functions. You can access the UI on port 8080.",
+    "categories": ["website"],
+    "platform": "linux",
+    "logo": "https://cloudinovasi.id/assets/img/logos/openfaas.png",
+    "repository": {
+      "url": "https://github.com/verbruggenalex/portainer-compose",
+      "stackfile": "stacks/horizon2020/docker-stack.yml"
+    }
+]

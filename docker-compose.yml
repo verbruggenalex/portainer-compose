@@ -14,11 +14,12 @@ services:
     container_name: "portainer-templates"
     networks:
       - local
+    volumes:
+      - ./templates:/usr/share/nginx/html
 
   portainer:
     image: portainer/portainer
     container_name: "portainer-app"
-#Automatically choose 'Manage the Docker instance where Portainer is running' by adding <--host=unix:///var/run/docker.sock> to the command
     command: --templates http://templates/templates.json
     networks:
       - local
