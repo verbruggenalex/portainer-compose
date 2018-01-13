@@ -1,17 +1,14 @@
 version: '3'
+
 services:
-    web:
-        image: fpfis/php71-dev
-        restart: always
-        environment:
-            - DOCUMENT_ROOT=/var/www/html/build
-        working_dir: /var/www/html
-        volumes:
-            - "./:/var/www/html"
-            - "/cache/composer:/cache/composer"
-        depends_on:
-            - mysql
-        ports:
-            - "8080"
-    mysql:
-        image: fpfis/mysql56
+  web:
+    image: fpfis/php71-dev
+    working_dir: /var/www/html
+    depends_on:
+      - mysql
+    deploy:
+      replicas: 1
+    ports:
+      - 8080
+  mysql:
+    image: fpfis/mysql56

@@ -1,14 +1,35 @@
 [
   {
+    "type": "container",
+    "title": "Drupal",
+    "description": "Open-source content management framework",
+    "categories": ["CMS"],
+    "platform": "linux",
+    "logo": "https://cloudinovasi.id/assets/img/logos/drupal.png",
+    "image": "drupal:latest",
+    "ports": [
+      "80/tcp"
+    ],
+    "volumes": ["/var/www/html"]
+  },
+  {
     "type": "stack",
     "title": "Horizon2020",
-    "description": "FPFIS Subsite for horizon2020",
-    "note": "Deploys the API gateway and sample functions. You can access the UI on port 8080.",
-    "categories": ["website"],
+    "description": "Platform site of Horizon2020",
+    "note": "Deploys a Wordpress instance connected to a MySQL database.",
+    "categories": ["CMS"],
     "platform": "linux",
-    "logo": "https://cloudinovasi.id/assets/img/logos/openfaas.png",
+    "logo": "http://ec.europa.eu/research/images/ec_for_fb.jpg",
     "repository": {
       "url": "https://github.com/verbruggenalex/portainer-compose",
       "stackfile": "stacks/horizon2020/docker-stack.yml"
-    }
+    },
+    "env": [
+      {
+        "name": "DOCUMENT_ROOT=/var/www/html/build",
+        "label": "Document root of site",
+        "description": "The location of your built codebase"
+      }
+    ]
+  }
 ]
