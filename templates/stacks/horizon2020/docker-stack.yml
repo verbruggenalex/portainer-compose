@@ -1,11 +1,17 @@
 version: '3'
 
 services:
-  web:
-    image: fpfis/php71-dev
+  roach1:
+    image: cockroachdb/cockroach:latest
+    command: "start --insecure"
     deploy:
       replicas: 1
     ports:
       - 8080
-  mysql:
-    image: fpfis/mysql56
+
+  roachN:
+    image: cockroachdb/cockroach:latest
+    command: "start --insecure --join=roach1,roachN"
+    deploy:
+      mode: global
+
