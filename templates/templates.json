@@ -13,7 +13,7 @@
     "volumes": ["/var/www/html"]
   },
   {
-    "type": "stack",
+    "type": "container",
     "title": "Horizon2020",
     "description": "Platform site of Horizon2020",
     "note": "Deploys a Wordpress instance connected to a MySQL database.",
@@ -22,7 +22,7 @@
     "logo": "http://ec.europa.eu/research/images/ec_for_fb.jpg",
     "repository": {
       "url": "https://github.com/verbruggenalex/portainer-compose",
-      "stackfile": "templates/stacks/horizon2020.yml"
+      "stackfile": "templates/stacks/horizon2020/docker-stack.yml"
     },
     "env": [
       {
