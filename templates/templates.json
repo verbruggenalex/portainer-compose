@@ -22,7 +22,7 @@
     "logo": "http://ec.europa.eu/research/images/ec_for_fb.jpg",
     "repository": {
       "url": "https://github.com/verbruggenalex/portainer-compose",
-      "stackfile": " stacks/horizon2020/docker-stack.yml"
+      "stackfile": "templates/stacks/horizon2020.yml"
     },
     "env": [
       {
