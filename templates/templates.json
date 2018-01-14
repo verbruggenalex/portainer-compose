@@ -1,35 +1,56 @@
 [
   {
     "type": "container",
-    "title": "Drupal",
-    "description": "Open-source content management framework",
-    "categories": ["CMS"],
+    "title": "fpfis/php71-dev",
+    "description": "Open-source HTTP server",
+    "categories": ["webserver"],
     "platform": "linux",
-    "logo": "https://cloudinovasi.id/assets/img/logos/drupal.png",
-    "image": "drupal:latest",
+    "logo": "https://cloudinovasi.id/assets/img/logos/httpd.png",
+    "image": "fpfis/php71-dev",
     "ports": [
-      "80/tcp"
+      "8080/tcp"
     ],
-    "volumes": ["/var/www/html"]
+    "env": [
+      {
+        "name": "DOCUMENT_ROOT",
+        "label": "Document root",
+        "set": "/var/www/html/build"
+      }
+    ],
+    "volumes": ["/usr/local/apache2/htdocs/"]
+  },
+  {
+    "type": "container",
+    "title": "fpfis/mysql56",
+    "description": "The most popular open-source database",
+    "categories": ["database"],
+    "platform": "linux",
+    "logo": "https://cloudinovasi.id/assets/img/logos/mysql.png",
+    "image": "fpfis/mysql56",
+    "ports": [
+      "3306/tcp"
+    ],
+    "volumes": ["/var/lib/mysql"]
   },
   {
     "type": "stack",
     "title": "Horizon2020",
-    "description": "Platform site of Horizon2020",
-    "note": "Deploys a Wordpress instance connected to a MySQL database.",
-    "categories": ["CMS"],
+    "description": "FPFIS Multisite of Horizon2020",
+    "note": "Sets up a clone of the production site.",
+    "categories": ["website"],
     "platform": "linux",
-    "logo": "http://ec.europa.eu/research/images/ec_for_fb.jpg",
+    "logo": "https://www.rga.eu.com/wp-content/uploads/european-commission.png",
     "repository": {
-      "url": "https://github.com/verbruggenalex/portainer-compose",
-      "stackfile": "templates/stacks/horizon2020/docker-stack.yml"
+      "url": "./",
+      "stackfile": "stacks/horizon2020.yml"
     },
     "env": [
       {
-        "name": "DOCUMENT_ROOT=/var/www/html/build",
-        "label": "Document root of site",
-        "description": "The location of your built codebase"
+        "name": "MYSQL_ROOT_PASSWORD",
+        "label": "Database root password",
+        "description": "Password used by the MySQL root user."
       }
-    ]
+    ],
+    "volumes": ["/usr/local/apache2/htdocs/"]
   }
 ]
