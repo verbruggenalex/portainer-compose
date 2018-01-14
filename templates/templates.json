@@ -34,9 +34,9 @@
   },
   {
     "type": "stack",
-    "title": "Horizon2020",
-    "description": "FPFIS Multisite of Horizon2020",
-    "note": "Sets up a clone of the production site.",
+    "title": "FPFIS Multisite",
+    "description": "FPFIS Multisites powered by toolkit",
+    "note": "Sets up a codebase, installs or clones a project.",
     "categories": ["website"],
     "platform": "linux",
     "logo": "https://www.rga.eu.com/wp-content/uploads/european-commission.png",
@@ -46,11 +46,36 @@
     },
     "env": [
       {
-        "name": "MYSQL_ROOT_PASSWORD",
-        "label": "Database root password",
-        "description": "Password used by the MySQL root user."
+        "name": "DOCUMENT_ROOT",
+        "label": "Document root",
+        "description": "The website document root.",
+        "set": "/var/www/html/build"
+      },
+      {
+        "name": "SUBSITE_REPOSITORY",
+        "label": "Repository url",
+        "description": "The url of the repository to clone."
+      },
+      {
+        "name": "SUBSITE_TYPE",
+        "label": "Website setup",
+        "description": "Allows you to set up a codebase, installation or clone.",
+        "select": [
+          {
+            "text": "Codebase",
+            "value": "code"
+          },
+          {
+            "text": "Installation",
+            "value": "install"
+          },
+          {
+            "text": "Clone",
+            "value": "clone"
+          }
+        ]
       }
     ],
-    "volumes": ["/usr/local/apache2/htdocs/"]
+    "volumes": ["horizon2020:/var/www/html"]
   }
 ]

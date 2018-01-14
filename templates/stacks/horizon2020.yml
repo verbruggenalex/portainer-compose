@@ -1,12 +1,34 @@
 version: '3'
-services:
-  web:
-    image: fpfis/php71-dev
-    working_dir: /var/www/html
-    links:
-      - mysql
-    ports:
-      - "8080"
-  mysql:
-    image: fpfis/mysql56
 
+services:
+
+    web:
+        image: fpfis/php71-dev
+        environment:
+            - DOCUMENT_ROOT=/var/www/html/build
+        working_dir: /var/www/html
+        volumes:
+            - "./:/var/www/html"
+            - "/cache/composer:/cache/composer"
+            - "~/.ssh:/tmp/.ssh"
+        depends_on:
+            - mysql
+        ports:
+            - "8080"
+
+    mysql:
+        image: fpfis/mysql56
+
+    dkrc:
+        image: docker/compose:1.18.0
+        privileged: true
+        working_dir: "$PWD"
+        restart: "no"
+        environment:
+            PWD: $PWD
+        volumes:
+            - ".:/$PWD"
+            - "/var/run/docker.sock:/var/run/docker.sock"
+        command: "exec -T --user web web /bin/bash -c ''
+        depends_on:
+            - web
