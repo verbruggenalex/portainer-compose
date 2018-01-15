@@ -16,8 +16,7 @@
         "label": "Document root",
         "set": "/var/www/html/build"
       }
-    ],
-    "volumes": ["/usr/local/apache2/htdocs/"]
+    ]
   },
   {
     "type": "container",
@@ -29,8 +28,7 @@
     "image": "fpfis/mysql56",
     "ports": [
       "3306/tcp"
-    ],
-    "volumes": ["/var/lib/mysql"]
+    ]
   },
   {
     "type": "stack",
@@ -69,7 +67,6 @@
           }
         ]
       }
-    ],
-    "volumes": ["horizon2020:/var/www/html"]
+    ]
   }
 ]
