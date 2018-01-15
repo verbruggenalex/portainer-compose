@@ -41,8 +41,8 @@
     "platform": "linux",
     "logo": "https://www.rga.eu.com/wp-content/uploads/european-commission.png",
     "repository": {
-      "url": "./",
-      "stackfile": "stacks/subsite.yml"
+      "url": "https://github.com/verbruggenalex/portainer-compose",
+      "stackfile": "templates/stacks/subsite.yml"
     },
     "env": [
       {

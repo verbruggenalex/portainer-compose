@@ -11,7 +11,7 @@ services:
         volumes:
             - "~/.ssh:/tmp/.ssh"
             - "~/test:/var/www"
-            - "./subsite-${BUILD_TYPE:-clone}.sh:/build.sh"
+            - "/home/verbral/portainer-compose/templates/stacks/subsite-${BUILD_TYPE:-clone}.sh:/build.sh"
             - "/cache/composer:/cache/composer"
         depends_on:
             - mysql
