@@ -42,22 +42,16 @@
     "logo": "https://www.rga.eu.com/wp-content/uploads/european-commission.png",
     "repository": {
       "url": "./",
-      "stackfile": "stacks/horizon2020.yml"
+      "stackfile": "stacks/subsite.yml"
     },
     "env": [
       {
-        "name": "DOCUMENT_ROOT",
-        "label": "Document root",
-        "description": "The website document root.",
-        "set": "/var/www/html/build"
-      },
-      {
-        "name": "SUBSITE_REPOSITORY",
+        "name": "PROJECT_REPOSITORY",
         "label": "Repository url",
         "description": "The url of the repository to clone."
       },
       {
-        "name": "SUBSITE_TYPE",
+        "name": "BUILD_TYPE",
         "label": "Website setup",
         "description": "Allows you to set up a codebase, installation or clone.",
         "select": [

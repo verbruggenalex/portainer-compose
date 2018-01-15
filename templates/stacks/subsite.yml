@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+
+    web:
+        image: fpfis/php71-dev
+        working_dir: /var/www
+        environment:
+            - CACHE_PREFIX=/tmp/drush
+            - PROJECT_REPOSITORY=git@github.com:ec-europa/horizon2020-reference.git
+        volumes:
+            - "~/.ssh:/tmp/.ssh"
+            - "~/test:/var/www"
+            - "./subsite-${BUILD_TYPE:-clone}.sh:/build.sh"
+            - "/cache/composer:/cache/composer"
+        depends_on:
+            - mysql
+        ports:
+            - "8080"
+        command: /build.sh
+
+    mysql:
+        image: fpfis/mysql56
+
+#    dkrc:
+#        image: docker/compose:1.18.0
+#        privileged: true
+#        restart: "no"
+#        working_dir: $PWD
+#        volumes:
+#            - "./subsite.yml:$PWD/docker-compose.yml"
+#            - "/var/run/docker.sock:/var/run/docker.sock"
+#        command: "exec -T --user web web /bin/bash -c /build.sh"
+#        depends_on:
+#            - web
+

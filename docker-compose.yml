@@ -20,7 +20,7 @@ services:
   portainer:
     image: portainer/portainer
     container_name: "portainer-app"
-    command: -H unix:///var/run/docker.sock --templates http://templates/templates.json --no-auth --privileged
+    command: -H unix:///var/run/docker.sock --templates http://templates/templates.json --no-auth
     networks:
       - local
     volumes:
