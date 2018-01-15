@@ -10,9 +10,7 @@ services:
         environment:
             - SSH_AUTH_SOCK=/ssh-agent
         command:
-            - clone
-            - ${PROJECT_REPOSITORY}
-            - .
+            - clone ${PROJECT_REPOSITORY} .
 
     composer:
         image: composer
