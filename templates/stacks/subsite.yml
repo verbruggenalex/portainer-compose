@@ -2,34 +2,38 @@ version: '3'
 
 services:
 
+    git:
+        image: alpine/git
+        volumes:
+            - "codebase:/git"
+            - "${SSH_AUTH_SOCK}:/ssh-agent"
+        environment:
+            - SSH_AUTH_SOCK=/ssh-agent
+        command:
+            - clone
+            - ${PROJECT_REPOSITORY}
+            - .
+
+    composer:
+        image: composer
+        volumes:
+            - "codebase:/app"
+        commands:
+            - install
+
     web:
         image: fpfis/php71-dev
-        environment:
-            - CACHE_PREFIX=/tmp/drush
         volumes:
             - "codebase:/var/www/html"
-            - "/home/verbral/portainer-compose/templates/stacks/subsite-${BUILD_TYPE:-clone}.sh:/build.sh"
             - "/tmp:/cache"
         depends_on:
             - mysql
         ports:
             - "8080"
-        command: "/bin/bash -c '/build.sh'"
+        command: "/bin/bash -c './toolkit/phing build-platform build-subsite-dev install-clean'"
 
     mysql:
         image: fpfis/mysql56
 
 volumes:
     codebase:
-#    dkrc:
-#        image: docker/compose:1.18.0
-#        privileged: true
-#        restart: "no"
-#        working_dir: $PWD
-#        volumes:
-#            - "./subsite.yml:$PWD/docker-compose.yml"
-#            - "/var/run/docker.sock:/var/run/docker.sock"
-#        command: "exec -T --user web web /bin/bash -c /build.sh"
-#        depends_on:
-#            - web
-
