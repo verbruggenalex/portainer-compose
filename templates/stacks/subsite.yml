@@ -9,8 +9,8 @@ services:
             - CACHE_PREFIX=/tmp/drush
             - PROJECT_REPOSITORY=git@github.com:ec-europa/horizon2020-reference.git
         volumes:
-            - "${HOME}/.ssh:/tmp/.ssh"
-            - "${HOME}/test:/var/www"
+            - "/home/verbral/.ssh:/tmp/.ssh"
+            - "/home/verbral/test:/var/www"
             - "/home/verbral/portainer-compose/templates/stacks/subsite-install.sh:/build.sh"
             - "/cache/composer:/cache/composer"
         depends_on:
