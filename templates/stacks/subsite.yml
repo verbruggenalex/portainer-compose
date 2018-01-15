@@ -4,14 +4,12 @@ services:
 
     web:
         image: fpfis/php71-dev
-        working_dir: /var/www
         environment:
             - CACHE_PREFIX=/tmp/drush
         volumes:
-            - "/home/verbral/.ssh:/tmp/.ssh"
-            - "/home/verbral/test:/var/www"
+            - "codebase:/var/www/html"
             - "/home/verbral/portainer-compose/templates/stacks/subsite-${BUILD_TYPE:-clone}.sh:/build.sh"
-            - "/cache/composer:/cache/composer"
+            - "/tmp:/cache"
         depends_on:
             - mysql
         ports:
