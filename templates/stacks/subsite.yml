@@ -9,15 +9,15 @@ services:
             - CACHE_PREFIX=/tmp/drush
             - PROJECT_REPOSITORY=git@github.com:ec-europa/horizon2020-reference.git
         volumes:
-            - "$HOME/.ssh:/tmp/.ssh"
-            - "$HOME/test:/var/www"
-            - "$HOME/portainer-compose/templates/stacks/subsite-install.sh:/build.sh"
+            - "${HOME}/.ssh:/tmp/.ssh"
+            - "${HOME}/test:/var/www"
+            - "/home/verbral/portainer-compose/templates/stacks/subsite-install.sh:/build.sh"
             - "/cache/composer:/cache/composer"
         depends_on:
             - mysql
         ports:
             - "8080"
-        command: /build.sh
+        command: bash -c "/build.sh"
 
     mysql:
         image: fpfis/mysql56
