@@ -6,9 +6,6 @@ services:
         image: alpine/git
         volumes:
             - "codebase:/git"
-            - "${SSH_AUTH_SOCK}:/ssh-agent"
-        environment:
-            - SSH_AUTH_SOCK=/ssh-agent
         command:
             - clone
             - ${PROJECT_REPOSITORY}
@@ -19,7 +16,7 @@ services:
         volumes:
             - "codebase:/app"
         command:
-            - install
+            - toolkit-install
 
     web:
         image: fpfis/php71-dev
