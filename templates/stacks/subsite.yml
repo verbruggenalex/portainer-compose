@@ -6,7 +6,7 @@ services:
         image: alpine/git
         volumes:
             - "codebase:/git"
-            - $SSH_AUTH_SOCK:/ssh-agent
+            - "$SSH_AUTH_SOCK:/ssh-agent"
         environment:
             - SSH_AUTH_SOCK=/ssh-agent
         command:
@@ -34,10 +34,6 @@ services:
 
     mysql:
         image: fpfis/mysql56
-
-configs:
-  subsite-settings:
-    external: true
 
 volumes:
     codebase:
