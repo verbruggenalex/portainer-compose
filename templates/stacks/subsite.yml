@@ -7,7 +7,9 @@ services:
         volumes:
             - "codebase:/git"
         command:
-            - clone ${PROJECT_REPOSITORY} .
+            - clone
+            - ${PROJECT_REPOSITORY}
+            - .
 
     composer:
         image: composer
