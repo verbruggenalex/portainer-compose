@@ -7,11 +7,10 @@ services:
         working_dir: /var/www
         environment:
             - CACHE_PREFIX=/tmp/drush
-            - PROJECT_REPOSITORY=git@github.com:ec-europa/horizon2020-reference.git
         volumes:
             - "/home/verbral/.ssh:/tmp/.ssh"
             - "/home/verbral/test:/var/www"
-            - "/home/verbral/portainer-compose/templates/stacks/subsite-install.sh:/build.sh"
+            - "/home/verbral/portainer-compose/templates/stacks/subsite-${BUILD_TYPE:-clone}.sh:/build.sh"
             - "/cache/composer:/cache/composer"
         depends_on:
             - mysql
