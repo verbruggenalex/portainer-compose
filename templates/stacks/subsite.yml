@@ -19,6 +19,8 @@ services:
     mysql:
         image: fpfis/mysql56
 
+volumes:
+    codebase:
 #    dkrc:
 #        image: docker/compose:1.18.0
 #        privileged: true
