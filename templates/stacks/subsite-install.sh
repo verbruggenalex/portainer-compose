@@ -1,7 +1,7 @@
 #!/bin/bash
 
 git init
-git remote origin ${PROJECT_REPOSITORY}
+git remote add origin ${PROJECT_REPOSITORY}
 git pull origin master
 
 composer install
