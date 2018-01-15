@@ -17,7 +17,7 @@ services:
             - mysql
         ports:
             - "8080"
-        command: bash -c "/build.sh"
+        command: "/bin/bash -c '/build.sh'"
 
     mysql:
         image: fpfis/mysql56
