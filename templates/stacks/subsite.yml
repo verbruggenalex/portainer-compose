@@ -16,7 +16,7 @@ services:
         image: composer
         volumes:
             - "codebase:/app"
-        commands:
+        command:
             - install
 
     web:
